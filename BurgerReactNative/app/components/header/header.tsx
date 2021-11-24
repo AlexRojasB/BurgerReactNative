@@ -4,8 +4,8 @@ import { HeaderProps } from "./header.props"
 import { Button } from "../button/button"
 import { spacing } from "../../theme"
 import { translate } from "../../i18n/"
-import { Container, HStack, Text, Icon  } from "native-base"
-
+import { Container, HStack, Text, HamburgerIcon  } from "native-base"
+import { Icon } from 'react-native-elements'
 // static styles
 const ROOT: ViewStyle = {
   flexDirection: "row",
@@ -27,12 +27,8 @@ export function Header(props: HeaderProps) {
   const {
     onLeftPress,
     onRightPress,
-    rightIcon,
-    leftIcon,
     headerText,
     headerTx,
-    style,
-    titleStyle,
   } = props
   const header = headerText || (headerTx && translate(headerTx)) || ""
 
@@ -41,7 +37,7 @@ export function Header(props: HeaderProps) {
       <HStack>
      
         <Button preset="link" onPress={onLeftPress}>
-          <Icon name="ios-menu" />
+          <HamburgerIcon size="6" color="#fff" />
         </Button>
      
       <View style={TITLE_MIDDLE}>
@@ -49,7 +45,13 @@ export function Header(props: HeaderProps) {
       </View>
      
         <Button preset="link" onPress={onRightPress}>
-          <Icon name="shopping-cart" />
+        <Icon
+            name='shopping-cart'
+            type='font-awesome-5'
+            size= {20}
+            color='#fff'
+            onPress={() => console.log('hello')} />
+        
           </Button>
     
       </HStack>
