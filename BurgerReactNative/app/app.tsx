@@ -19,6 +19,7 @@ import { useBackButtonHandler, AppNavigator, canExit, useNavigationPersistence }
 import { RootStore, RootStoreProvider, setupRootStore } from "./models"
 import { ToggleStorybook } from "../storybook/toggle-storybook"
 import { ErrorBoundary } from "./screens/error/error-boundary"
+import { NativeBaseProvider } from "native-base"
 
 // This puts screens in a native ViewController or Activity. If you want fully native
 // stack navigation, use `createNativeStackNavigator` in place of `createStackNavigator`:
@@ -57,6 +58,7 @@ function App() {
 
   // otherwise, we're ready to render the app
   return (
+    <NativeBaseProvider>
     <ToggleStorybook>
       <RootStoreProvider value={rootStore}>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
@@ -69,6 +71,7 @@ function App() {
         </SafeAreaProvider>
       </RootStoreProvider>
     </ToggleStorybook>
+    </NativeBaseProvider>
   )
 }
 
